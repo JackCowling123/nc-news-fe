@@ -1,3 +1,7 @@
+#root {
+  height:100vh;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -11,6 +15,9 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-width: 320px;
+  width: 100vw;
+  min-height: 100vh;
 }
 
 a {
@@ -27,6 +34,7 @@ body {
   display: flex;
   place-items: center;
   min-width: 320px;
+  width: 100vw;
   min-height: 100vh;
 }
 
@@ -54,10 +62,18 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.ant-card-head {
+  font-weight: bold;
+  font-size: 26px;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
+    width: 100vw !important;
+    height: 100vh !important;
+
   }
   a:hover {
     color: #747bff;
