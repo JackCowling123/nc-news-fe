@@ -1,8 +1,21 @@
 import { Card } from "antd";
+import {Link} from "react-router-dom";
+import React from "react";
 
-function NewsArticles({article}) {
+function NewsArticles({article, current, setCurrent, articleId, setArticleId}) {
+    /* get rid of articleId states */
+    const viewState = () => {
+        console.log(current);
+    }
 
-    return (
+    const onClick = (e, articleId) => {
+        console.log(e);
+        console.log(articleId);
+        setCurrent('ArticlePage');
+        viewState();
+    };
+
+    return ( /* wrap card in a link */
         <Card
             title={article.title}
             style={{
@@ -16,7 +29,10 @@ function NewsArticles({article}) {
             <div style={{width: '100%', height: '200px', overflow: 'hidden'}}>
                 {article.article_img_url ? <img style={{width: '100%', height: 'auto', overflow: 'hidden'}} src={article.article_img_url}/>: null}
             </div>
-            <button>Expand</button>
+            {/*<button onClick={() => onClick(article.article_id)}>*/}
+            <button>
+                <Link to={`/ArticlePage/${article.article_id}`}>View Article</Link>
+            </button>
             <p>Comments: {article.comment_count}</p>
             <p>Created at: {article.created_at}</p>
         </Card>
