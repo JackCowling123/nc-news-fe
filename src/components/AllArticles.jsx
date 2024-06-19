@@ -5,12 +5,11 @@ import NewsArticles from './NewsArticles.jsx';
 import { Flex } from "antd";
 
 
-function AllArticles({current, setCurrent, articleId, setArticleId}) {
+function AllArticles() {
 
     const [newsData, setNewsData] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    // const [filter, setFilter] = useState("All Items");
 
     useEffect(() => {
         getArticles().then((data) => {
@@ -32,10 +31,6 @@ function AllArticles({current, setCurrent, articleId, setArticleId}) {
                     return <NewsArticles
                         key={article.article_id}
                         article={article}
-                        current={current}
-                        setCurrent={setCurrent}
-                        articleId={articleId}
-                        setArticleId={setArticleId}
                     />
                 })}
             </Flex>
