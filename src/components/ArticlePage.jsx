@@ -7,7 +7,6 @@ import { Card} from 'antd';
 function ArticlePage() {
 
     const {article_id} = useParams();
-    console.log(article_id);
     const [loading, setLoading] = useState(true);
     const [currentArticle, setCurrentArticle,] = useState(null);
     const [commentsOn, setCommentsOn] = useState(false);
@@ -28,9 +27,7 @@ function ArticlePage() {
 
     useEffect(() => {
         if (commentsOn) {
-            console.log('invoked')
             getCommentsByArticleId(article_id).then((data) => {
-                console.log(data);
                 setCurrentComments(data);
             });
         }

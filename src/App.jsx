@@ -15,16 +15,12 @@ const { Content, Footer, Sider } = Layout;
 
 
 const App = () => {
-    /* remove these */
+
     const [current, setCurrent] = useState('home');
-    const [articleId, setArticleId] = useState('')
-
-
 
     const onClick = (e) => {
         setCurrent(e.key);
     };
-
 
 
     return (
