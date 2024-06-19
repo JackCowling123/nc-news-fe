@@ -5,7 +5,7 @@ import NewsArticles from './NewsArticles.jsx';
 import { Flex } from "antd";
 
 
-function AllArticles() {
+function AllArticles({current, setCurrent, articleId, setArticleId}) {
 
     const [newsData, setNewsData] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -14,12 +14,10 @@ function AllArticles() {
 
     useEffect(() => {
         getArticles().then((data) => {
-            console.log(data);
             setNewsData(data.allArticles);
             setLoading(false);
         });
     }, []);
-    console.log(newsData);
 
     if (loading) {
         return <div>Loading...</div>;
@@ -30,9 +28,15 @@ function AllArticles() {
         <div>
             <h1>Explore Our Articles</h1>
             <Flex justify={'space-between'} wrap gap="small">
-
                 {newsData.map((article) => {
-                    return <NewsArticles key={article.article_id} article={article}/>
+                    return <NewsArticles
+                        key={article.article_id}
+                        article={article}
+                        current={current}
+                        setCurrent={setCurrent}
+                        articleId={articleId}
+                        setArticleId={setArticleId}
+                    />
                 })}
             </Flex>
         </div>
