@@ -2,18 +2,8 @@ import { Card } from "antd";
 import {Link} from "react-router-dom";
 import React from "react";
 
-function NewsArticles({article, current, setCurrent, articleId, setArticleId}) {
+function NewsArticles({article}) {
     /* get rid of articleId states */
-    const viewState = () => {
-        console.log(current);
-    }
-
-    const onClick = (e, articleId) => {
-        console.log(e);
-        console.log(articleId);
-        setCurrent('ArticlePage');
-        viewState();
-    };
 
     return ( /* wrap card in a link */
         <Card
