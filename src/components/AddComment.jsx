@@ -20,8 +20,8 @@ function NewComment({articleId, loading, setLoading}) {
         }
         insertNewComment(articleId.articleId, submittedComment)
             .then((data) => {
-                setCommentUsername(""); // Clear the username field if needed
-                setCommentBody(""); // Clear the comment field after submission
+                setCommentUsername("");
+                setCommentBody("");
                 setLoading(false);
                 alert('Comment posted successfully');
             }).catch((error) => {
