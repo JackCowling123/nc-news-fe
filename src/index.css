@@ -67,6 +67,18 @@ button:focus-visible {
   font-size: 26px;
 }
 
+.myButtons {
+  background-color: white !important;
+  color: blue !important;
+  border-color: blue !important;
+}
+
+.myButtons.checked {
+  background-color: blue !important;
+  color: white !important;
+  border-color: white !important;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
