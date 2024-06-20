@@ -57,8 +57,3 @@ function NewComment({articleId, loading, setLoading}) {
 }
 
 export default NewComment;
-
-
-/*
-
- */

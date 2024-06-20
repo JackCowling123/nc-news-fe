@@ -18,6 +18,11 @@ const Header = ({ current, onClick }) => {
             key: 'all articles',
             icon: <UnorderedListOutlined />,
         },
+        {
+            label: <Link to="/MyProfile">My Profile</Link>,
+            key: 'my profile',
+            icon: <UnorderedListOutlined />,
+        },
     ];
 
     return (
