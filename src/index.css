@@ -79,6 +79,15 @@ button:focus-visible {
   border-color: white !important;
 }
 
+.comment-form {
+  margin:10px 0;
+  padding: 20px;
+  background-color: #646cff;
+}
+.comment-form label {
+  margin: 20px;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

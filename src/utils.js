@@ -29,3 +29,12 @@ export const updateArticleVotes = (votes, article_id) => {
 
 }
 
+export const insertNewComment = (article_id, newComment) => {
+    return newsApi.post( `/articles/${article_id}/comments`, newComment).then((res) => {
+        return res.data;
+    }).catch((error) => {
+        console.log(error)
+    })
+
+}
+

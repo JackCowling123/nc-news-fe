@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { HomeOutlined, UnorderedListOutlined } from '@ant-design/icons';
+import { HomeOutlined, UnorderedListOutlined, UserOutlined } from '@ant-design/icons';
 import { Menu, Layout } from 'antd';
 import Logo from '../assets/NorthCoders.png'
 
@@ -17,6 +17,11 @@ const Header = ({ current, onClick }) => {
             label: <Link to="/AllArticles">Articles</Link>,
             key: 'all articles',
             icon: <UnorderedListOutlined />,
+        },
+        {
+            label: <Link to="/MyProfile">My Profile</Link>,
+            key: 'My Profile',
+            icon: <UserOutlined />,
         },
     ];
 
