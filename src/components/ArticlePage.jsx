@@ -1,8 +1,9 @@
 import {useEffect, useState} from "react";
-import {getArticleById, getArticles, getCommentsByArticleId} from "../utils.js";
+import {getArticleById, updateArticleVotes, getCommentsByArticleId,} from "../utils.js";
 import {useParams} from "react-router-dom";
 import React from 'react';
-import { Card} from 'antd';
+import { Card, Flex, Radio, Button} from 'antd';
+import { LikeOutlined } from '@ant-design/icons';
 
 function ArticlePage() {
 
@@ -11,11 +12,42 @@ function ArticlePage() {
     const [currentArticle, setCurrentArticle,] = useState(null);
     const [commentsOn, setCommentsOn] = useState(false);
     const [currentComments, setCurrentComments] = useState(null);
-    /*use params for useEffect*/
+    const [voteClicked, setVoteClicked] = useState(false);
+    const [currentVotes, setCurrentVotes] = useState(0);
 
-    const commentClick = (e) => {
+
+    const commentClick = () => {
         setCommentsOn(true);
     }
+
+    const updateVotes = () => {
+        if (voteClicked) {
+            setCurrentVotes(currentVotes - 1);
+            updateArticleVotes({ inc_votes: -1 }, article_id).then((data) => {
+            }).catch((error) => {
+                console.log(error)
+                alert('Failed to update votes at this time. Please try again later');
+            })
+        } else {
+            setCurrentVotes(currentVotes + 1);
+            updateArticleVotes({ inc_votes: 1 }, article_id).then((data) => {
+            }).catch((error) => {
+                console.log(error)
+                alert('Failed to update votes at this time. Please try again later');
+            })
+        }
+    };
+
+    const voteClick = () => {
+        setVoteClicked(!voteClicked);
+        updateVotes();
+    };
+
+    useEffect(() => {
+
+    }, [currentVotes])
+
+
 
 
     useEffect(() => {
@@ -33,6 +65,9 @@ function ArticlePage() {
         }
     }, [article_id, commentsOn]);
 
+
+
+
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -46,6 +81,15 @@ function ArticlePage() {
                 <p>Author: {currentArticle.author}</p>
                 <p>Topic: {currentArticle.topic}</p>
                 <p>{currentArticle.body}</p>
+                <p>Votes: {currentArticle.votes + currentVotes}</p>
+                <Flex gap="middle" align="start" vertical>
+                    <Button
+                        onClick={voteClick}
+                        className={`myButtons ${voteClicked === true ? 'checked' : ''}`}
+                        value="like">
+                        <LikeOutlined />
+                    </Button>
+                </Flex>
                 <button onClick={commentClick}>
                     View Comments
                 </button>
