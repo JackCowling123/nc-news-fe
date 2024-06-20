@@ -4,6 +4,7 @@ import {useParams} from "react-router-dom";
 import React from 'react';
 import { Card, Flex, Radio, Button} from 'antd';
 import { LikeOutlined } from '@ant-design/icons';
+import NewComment from "./AddComment.jsx";
 
 function ArticlePage() {
 
@@ -90,8 +91,9 @@ function ArticlePage() {
                         <LikeOutlined />
                     </Button>
                 </Flex>
+                <NewComment articleId={article_id}  loading={loading} setLoading={setLoading}/>
                 <button onClick={commentClick}>
-                    View Comments
+                    View All Comments
                 </button>
             </Card>
             {commentsOn && currentComments ? (
