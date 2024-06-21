@@ -36,7 +36,7 @@ const App = () => {
                             <Route path="/" element={<Home />} user={user} />
                             <Route path="/AllArticles" element={<AllArticles/>} user={user} />
                             <Route path="/ArticlePage/:article_id" element={<ArticlePage />} user={user} />
-                            <Route path="/MyProfile" element={<MyProfile />} user={user} setUser={setUser} />
+                            <Route path="/MyProfile" element={<MyProfile  user={user} setUser={setUser} />} />
                         </Routes>
                     </Content>
                 </Layout>

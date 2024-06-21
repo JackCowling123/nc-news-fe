@@ -38,3 +38,13 @@ export const insertNewComment = (article_id, newComment) => {
 
 }
 
+export const deleteComment = (article_id) => {
+    return newsApi.delete( `/articles/comments{comment_id}`).then((res) => {
+        return res.data;
+    }).catch((error) => {
+        console.log(error)
+    })
+}
+
+
+

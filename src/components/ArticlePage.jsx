@@ -1,12 +1,12 @@
 import {useEffect, useState} from "react";
-import {getArticleById, updateArticleVotes, getCommentsByArticleId,} from "../utils.js";
+import {getArticleById, updateArticleVotes, getCommentsByArticleId, deleteComment} from "../utils.js";
 import {useParams} from "react-router-dom";
 import React from 'react';
 import { Card, Flex, Radio, Button} from 'antd';
 import { LikeOutlined } from '@ant-design/icons';
 import NewComment from "./AddComment.jsx";
 
-function ArticlePage() {
+function ArticlePage({user}) {
 
     const {article_id} = useParams();
     const [loading, setLoading] = useState(true);
@@ -19,6 +19,18 @@ function ArticlePage() {
 
     const commentClick = () => {
         setCommentsOn(true);
+    }
+
+    const deleteClick = (commentAuthor) => {
+        console.log(user.username)
+        console.log(commentAuthor)
+        if (commentAuthor === user) {
+            console.log('comment is same as user')
+            console.log(user)
+            console.log(commentAuthor)
+        } else {
+            alert('You are ineligible to delete this comment');
+        }
     }
 
     const updateVotes = () => {
@@ -102,7 +114,11 @@ function ArticlePage() {
                         <div key={index}>
                             <h3>Author: {comment.author}</h3>
                             <p>{comment.body}</p>
+                            <button className='myButtons' onClick={() => deleteClick(comment.author)}>
+                                Delete Comment
+                            </button>
                         </div>
+
                     ))}
                 </div>
             ) : null}
