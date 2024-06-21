@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+
 function MyProfile({user, setUser}) {
     const [profileUsername, setProfileUsername] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
         if (profileUsername === '') {
-            alert('');
+            alert('Please enter username');
             return;
         } else {
             setUser({
                 loggedIn: true,
                 username: profileUsername
             });
+            navigate('/');
         }
-        console.log(profileUsername);
-
     }
 
     return (
